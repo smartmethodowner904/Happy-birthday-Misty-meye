@@ -387,6 +387,12 @@ function type(){
     setTimeout(type, 80);
   }
 }
+  window.onload = function () {
+    music.play().catch(() => {});
+    isPlaying = true;
+    type();
+    createMatrixErrorRain();
+};
 </script>
 
 </body>
