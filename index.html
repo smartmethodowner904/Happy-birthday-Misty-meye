@@ -24,53 +24,6 @@ body{
   overflow-x:hidden;
 }
 
-/* 🟢 GREEN ENTER SCREEN STYLES */
-#enterScreen{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:black;
-    color:#00ff66;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    z-index:9999;
-}
-
-#enterScreen h1{
-  animation: glitchText 0.3s infinite;
-  color:#00ff66;
-  text-shadow: 3px 0 #00ffcc, -3px 0 #00aa44;
-  font-size: 32px;
-}
-
-#enterScreen button{
-    margin-top:20px;
-    padding:12px 30px;
-    background:#00ff66;
-    color:black;
-    border:none;
-    font-size:16px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #00ff66;
-    transition: 0.3s;
-}
-
-#enterScreen button:hover{
-    transform: scale(1.1);
-    box-shadow: 0 0 25px #00ff66, 0 0 40px #00ffcc;
-}
-
-/* ❗ MAIN SITE INITIALLY HIDDEN */
-#mainContent{
-    display:none;
-}
-
 /* ⭐ RED ANIMATED BACKGROUND GLOW */
 .bg-glow{
   position:fixed;
