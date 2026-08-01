@@ -332,18 +332,33 @@ function createMatrixErrorRain(){
   }
 }
 
-// Music Toggle
+//// Music Toggle
 function toggleMusic(){
-  if(!isPlaying){
-    music.play().then(() => {
-      isPlaying = true;
-    }).catch(() => alert("Music could not play!"));
-  } else {
-    music.pause();
-    isPlaying = false;
-  }
+    if(isPlaying){
+        music.pause();
+        isPlaying = false;
+    }else{
+        music.play().then(()=>{
+            isPlaying = true;
+        }).catch(()=>{});
+    }
 }
+// যেকোনো জায়গায় ক্লিক করলে Music ON
+document.addEventListener("click", function(e){
 
+    // Music বাটনে ক্লিক করলে Toggle হবে
+    if(e.target.closest(".btn") &&
+       e.target.closest(".btn").innerText.includes("Music")){
+        return;
+    }
+
+    // অন্য যেকোনো ক্লিকে Music ON হবে
+    if(!isPlaying){
+        music.play().then(()=>{
+            isPlaying = true;
+        }).catch(()=>{});
+    }
+});
 // Live Clock Updating Function
 function updateTime(){
   let now = new Date();
