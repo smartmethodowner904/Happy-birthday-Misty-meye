@@ -393,6 +393,23 @@ function type(){
     type();
     createMatrixErrorRain();
 };
+  // Page-এর যেকোনো জায়গায় ক্লিক করলে Music ON
+document.addEventListener("click", function(e){
+
+    // Music Button হলে এই কোড চলবে না
+    if(e.target.closest(".btn") &&
+       e.target.closest(".btn").innerText.includes("Music")){
+        return;
+    }
+
+    // অন্য যেকোনো ক্লিকে Music চালু হবে
+    if(!isPlaying){
+        music.play().then(()=>{
+            isPlaying = true;
+        }).catch(()=>{});
+    }
+
+});
 </script>
 
 </body>
