@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riyad Gamer Official</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#020617,#150307,#020617);
+  color:white;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+
+/* 🟢 GREEN ENTER SCREEN STYLES */
+#enterScreen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:black;
+    color:#00ff66;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:9999;
+}
+
+#enterScreen h1{
+  animation: glitchText 0.3s infinite;
+  color:#00ff66;
+  text-shadow: 3px 0 #00ffcc, -3px 0 #00aa44;
+  font-size: 32px;
+}
+
+#enterScreen button{
+    margin-top:20px;
+    padding:12px 30px;
+    background:#00ff66;
+    color:black;
+    border:none;
+    font-size:16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #00ff66;
+    transition: 0.3s;
+}
+
+#enterScreen button:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #00ff66, 0 0 40px #00ffcc;
+}
+
+/* ❗ MAIN SITE INITIALLY HIDDEN */
+#mainContent{
+    display:none;
+}
+
+/* ⭐ RED ANIMATED BACKGROUND GLOW */
+.bg-glow{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle at 20% 30%, rgba(255,0,0,0.3), transparent 50%),
+             radial-gradient(circle at 80% 70%, rgba(255,0,85,0.25), transparent 50%);
+  filter:blur(70px);
+  z-index:0;
+  animation:bgmove 6s infinite alternate;
+}
+
+@keyframes bgmove{
+  0%{transform:scale(1);}
+  100%{transform:scale(1.2);}
+}
+
+/* 🔴 RED MATRIX ERROR RAIN ANIMATION (FAST SPEED) */
+.matrix-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.matrix-column {
+  position: absolute;
+  top: -100px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #ff0033;
+  text-shadow: 0 0 5px #ff0000, 0 0 12px #ff0055;
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  animation: matrixFall linear infinite;
+  opacity: 0.95;
+}
+
+/* ⚡ FAST RAIN SPEED ANIMATION */
+@keyframes matrixFall {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(110vh); }
+}
+
+/* 🔥 PREMIUM CONTAINER WITH RED ACCENTS */
+.container{
+  position:relative;
+  z-index:5;
+  width:92%;
+  max-width:420px;
+  margin:40px auto;
+  padding:25px;
+  border-radius:25px;
+  background:rgba(20, 0, 5, 0.55);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,0,50,0.4);
+  box-shadow:0 0 25px rgba(255,0,50,0.3);
+  text-align:center;
+  animation:fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* 📸 GLITCH PROFILE PIC WITH RED GLOW */
+.logo img{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  border:4px solid #ff0033;
+  box-shadow:0 0 15px #ff0033,0 0 35px #ff0000;
+  margin-bottom:12px;
+  animation: profileGlitch 0.2s infinite alternate;
+}
+
+@keyframes profileGlitch{
+  0% { transform: translate(0, 0) scale(1); filter: drop-shadow(2px 2px 0px #ff0000); }
+  25% { transform: translate(-2px, 1px) scale(1.02); }
+  50% { transform: translate(2px, -1px) scale(0.99); filter: drop-shadow(-2px -2px 0px #ff0055); }
+  75% { transform: translate(-1px, -1px) scale(1.01); }
+  100% { transform: translate(1px, 2px) scale(1); }
+}
+
+/* Name Red Gradient Glitch */
+h2{
+  font-size:24px;
+  font-weight:700;
+  background:linear-gradient(90deg,#ff0033,#ff3300,#ff0055);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:glitchText 0.3s infinite;
+}
+
+@keyframes glitchText{
+  0%{transform:translate(0);}
+  25%{transform:translate(-2px,0);}
+  50%{transform:translate(2px,0);}
+  75%{transform:translate(-1px,0);}
+  100%{transform:translate(0);}
+}
+
+/* Subtitle */
+.sub{
+  margin-top:5px;
+  font-size:13px;
+  color:#ff99a8;
+  opacity:0.9;
+}
+
+/* Social icons */
+.icons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin:18px 0;
+}
+
+.icon{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:rgba(0,0,0,0.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid rgba(255,0,50,0.5);
+  box-shadow:0 0 15px rgba(255,0,50,0.4);
+  transition:0.3s;
+}
+
+.icon img{
+  width:24px;
+  height:24px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 8px #ff0033);
+}
+
+.icon:hover{
+  transform:scale(1.25);
+  box-shadow:0 0 25px #ff0000,0 0 55px #ff0033;
+}
+
+/* Buttons row */
+.btn-row{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:10px;
+}
+
+.btn{
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:700;
+  background:linear-gradient(90deg,#ff0033,#ff3300);
+  color:#fff;
+  box-shadow:0 0 15px rgba(255,0,50,0.6);
+  transition:0.2s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 25px #ff0000,0 0 50px #ff0055;
+}
+
+.btn:active{
+  transform:scale(0.95);
+}
+
+/* Typing text */
+.bottom{
+  margin-top:18px;
+  padding:14px;
+  border-radius:18px;
+  background:rgba(0,0,0,0.5);
+  border:1px solid rgba(255,0,50,0.3);
+  font-size:13px;
+  line-height:1.7;
+  color:#ff4d6d;
+  white-space:pre-line;
+  box-shadow:0 0 15px rgba(255,0,50,0.2);
+}
+
+/* Smooth Scrollbar */
+::-webkit-scrollbar{
+  width:6px;
+}
+::-webkit-scrollbar-thumb{
+  background:#ff0033;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🟢 1. GREEN ENTER SCREEN -->
+<div id="enterScreen">
+    <h1>SYSTEM ERROR</h1>
+    <p style="font-size:14px; color: #66ff99; margin-top: 5px;">Click ENTER button</p>
+    <button onclick="enterSite()">ENTER</button>
+</div>
+
+<!-- 🎵 MUSIC FILE -->
+<audio id="bgmusic" loop preload="auto">
+  <source src="https://raw.githubusercontent.com/Riyad-X69/Riyad/main/tiktok_1781320386792.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🔊 CLICK SOUND -->
+<audio id="clickSound">
+  <source src="https://www.myinstants.com/media/sounds/mouse-click.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🔻 2. MAIN WEBSITE CONTENT -->
+<div id="mainContent">
+
+  <div class="bg-glow"></div>
+
+  <!-- 🔴 Matrix Error Rain Container -->
+  <div class="matrix-container" id="matrix"></div>
+
+  <div class="container">
+
+    <div class="logo">
+      <img src="https://i.postimg.cc/MKj6j2kL/95b6ff45cd35fc43eec9abba4b0e9b20.jpg" alt="Profile Logo">
+    </div>
+
+    <h2>ʀɪʏᴀᴅ ɢᴀᴍᴇʀ ᴏꜰꜰɪᴄɪᴀʟ</h2>
+    <div class="sub">🤲𝐀𝐥𝐡𝐚𝐦𝐝𝐮𝐥𝐢𝐥𝐥𝐚𝐡 𝐅𝐨𝐫 𝐀𝐥𝐰𝐚𝐲𝐬 🤲</div>
+
+    <div class="icons">
+      <a class="icon" href="https://www.facebook.com/riadx52" target="_blank" onclick="playClick()">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+      </a>
+
+      <a class="icon" href="https://www.tiktok.com/@orekix69x?_r=1&_t=ZS-98UojS9m3kKS-" target="_blank" onclick="playClick()">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+      </a>
+
+      <a class="icon" href="http://t.me/Kirito_X69" target="_blank" onclick="playClick()">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+      </a>
+
+      <a class="icon" href="https://www.instagram.com/riad.x69?igsh=N2kzNGZyMTc2N3hu" target="_blank" onclick="playClick()">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+      </a>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn" onclick="toggleMusic(); playClick()">🎵 Music</button>
+      <button class="btn" id="timeBtn" onclick="playClick()">⏰ Time</button>
+    </div>
+
+    <div class="bottom" id="typing"></div>
+
+  </div>
+
+</div>
+
+<script>
+let music = document.getElementById("bgmusic");
+let isPlaying = false;
+
+// 🔴 ENTER BUTTON CLICK FUNCTION
+function enterSite(){
+    document.getElementById("enterScreen").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+
+    music.play().then(() => {
+        isPlaying = true;
+    }).catch(err => {
+        console.log("Autoplay blocked: ", err);
+    });
+
+    type();
+    createMatrixErrorRain();
+}
+
+// Click Sound
+function playClick(){
+  let c = document.getElementById("clickSound");
+  c.currentTime = 0;
+  c.play().catch(()=>{});
+}
+
+// 🔴 FAST RED MATRIX ERROR RAIN FUNCTION
+function createMatrixErrorRain(){
+  const container = document.getElementById("matrix");
+  const words = ["ERROR", "SYSTEM", "404", "HACK", "RIYAD", "X69", "0101"];
+  const columns = Math.floor(window.innerWidth / 20);
+
+  for(let i = 0; i < columns; i++){
+    let col = document.createElement("div");
+    col.className = "matrix-column";
+    
+    let randomText = "";
+    for(let j = 0; j < 12; j++){
+      randomText += words[Math.floor(Math.random() * words.length)] + " ";
+    }
+    col.innerText = randomText;
+    
+    col.style.left = (i * 20) + "px";
+    
+    // ⚡ স্পিড দ্রুত রাখার জন্য ০.৮ থেকে ১.৮ সেকেন্ড রাখা হলো
+    col.style.animationDuration = (Math.random() * 1 + 0.8) + "s";
+    col.style.animationDelay = (Math.random() * 1.5) + "s";
+    
+    container.appendChild(col);
+  }
+}
+
+// Music Toggle
+function toggleMusic(){
+  if(!isPlaying){
+    music.play().then(() => {
+      isPlaying = true;
+    }).catch(() => alert("Music could not play!"));
+  } else {
+    music.pause();
+    isPlaying = false;
+  }
+}
+
+// Live Clock Updating Function
+function updateTime(){
+  let now = new Date();
+  let h = now.getHours();
+  let m = String(now.getMinutes()).padStart(2, "0");
+  let s = String(now.getSeconds()).padStart(2, "0");
+  let ampm = h >= 12 ? "PM" : "AM";
+  h = h % 12;
+  h = h ? h : 12;
+
+  document.getElementById("timeBtn").innerHTML = "⏰ " + h + ":" + m + ":" + s + " " + ampm;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+// Auto Typing Text Effect
+let text = " আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহি ওয়া বারাকাতুহু 🤲\n\n" +
+" ᴍʏ ɴᴀᴍᴇ'ꜱ: ʀɪʏᴀᴅ 🌸 \n" +
+" 𝗔𝗴𝗲: 𝟮𝟬+\n" +
+" 𝐖𝐨𝐫𝐤: 𝐎𝐧𝐥𝐢𝐞 𝐠𝐚𝐦𝐢𝐧𝐠 🎮\n" +
+"🌸ₐₙd ᵢ ₐₘ ₐₙ ₐₙᵢₘₑ ₗₒᵥₑᵥ🌸";
+
+let i = 0;
+function type(){
+  if(i < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 80);
+  }
+}
+</script>
+
+</body>
+</html>
